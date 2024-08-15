@@ -1,3 +1,4 @@
+#Funcion para recibir un numero entero, sino se recibe 
 def readint( message):
     while True:
         try:
@@ -6,32 +7,31 @@ def readint( message):
             print("El dato que ingreso no es numerico, intentelo nuevamente.")
 
 def readnote(mensaje):
-    try:
-        numes = float(input(mensaje))
-        if numes < 0 or numes > 5:
-            raise ValueError
-        return numes
-    except ValueError:
-        print("El valor no esta en el rando de 0 a 5.")
+    while True:
+        try:
+            numes = float(input(mensaje))
+            if numes < 0 or numes > 5:
+                raise ValueError
+            return numes
+        except ValueError:
+            print("El valor no esta en el rando de 0 a 5.")
 
 def receivedata(numes, students):
     for i in range(1, numes + 1):
         name = input(f"Ingrese el nombre del estudiante numero {i}: ")
-        note2 = readnote(f"Ingrese la nota del estudiante {name}: ")
-        if note2 >= 3:
+        numes = readnote(f"Ingrese la nota del estudiante {name}: ")
+        if numes >= 3:
             aprobado["Nombre"] = name
-            aprobado["Aprobo con"] = note2
-        elif note2 < 3:
+            aprobado["Aprobo con"] = numes
+        elif numes < 3:
             reprobado["Nombre"] = name
-            reprobado["Reprobo con"] = note2
+            reprobado["Reprobo con"] = numes
 
         idest = readint(f"Ingrese la identificacion del estudiante {name}: ")
         while idest in students:
             print(f"{idest} ya existe, intentelo nuevamente.")
             idest = readint(f"Ingrese la identificacion del estudiante numero {name}: ")
         students.append(idest)
-
-        
 
 def showstudents(students):
     print(f"Los estudiantes son: {students}")
