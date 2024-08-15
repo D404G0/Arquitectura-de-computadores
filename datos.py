@@ -20,10 +20,13 @@ def receivedata(numes, students):
     for i in range(1, numes + 1):
         name = input(f"Ingrese el nombre del estudiante numero {i}: ")
         numes = readnote(f"Ingrese la nota del estudiante {name}: ")
+        id = name[0:2], idest[0:2]
         if numes >= 3:
+            aprobado["Id"] = id
             aprobado["Nombre"] = name
             aprobado["Aprobo con"] = numes
         elif numes < 3:
+            aprobado["Id"] = id
             reprobado["Nombre"] = name
             reprobado["Reprobo con"] = numes
 
@@ -38,6 +41,7 @@ def showstudents(students):
     print(aprobado, reprobado)
 
 if __name__ == "__main__":
+    id = []
     aprobado = {}
     reprobado = {}
     students = []
