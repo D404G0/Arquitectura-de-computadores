@@ -20,7 +20,6 @@ def receivedata(numes, students):
     for i in range(1, numes + 1):
         name = input(f"Ingrese el nombre del estudiante numero {i}: ")
         numes = readnote(f"Ingrese la nota del estudiante {name}: ")
-        id = name[0:2], idest[0:2]
         if numes >= 3:
             aprobado["Id"] = id
             aprobado["Nombre"] = name
@@ -35,16 +34,19 @@ def receivedata(numes, students):
             print(f"{idest} ya existe, intentelo nuevamente.")
             idest = readint(f"Ingrese la identificacion del estudiante numero {name}: ")
         students.append(idest)
+        promedio.append(numes)
 
 def showstudents(students):
     print(f"Los estudiantes son: {students}")
     print(aprobado, reprobado)
+    print(f"El promedio de {numes} estudiates es {sum(promedio)/numes} ")
 
 if __name__ == "__main__":
     id = []
     aprobado = {}
     reprobado = {}
     students = []
+    promedio = []
     while True:
         numes = readint("Cuantos estudiantes quiere validar?: ")
         if numes > 0:
